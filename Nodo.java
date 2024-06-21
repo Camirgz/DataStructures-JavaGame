@@ -1,4 +1,5 @@
 public class Nodo {
+    
     private Elemento dato;
     private Nodo siguiente;
     private Nodo anterior;

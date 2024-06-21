@@ -27,10 +27,6 @@ Este proyecto implementa una serie de estructuras de datos y algoritmos en Java.
 
 Para compilar el proyecto, navega a la carpeta `src` y ejecuta el siguiente comando:
 
-```sh
-javac main/Main.java juego/*.java
-```
-
 
 ## Uso del Programa
 

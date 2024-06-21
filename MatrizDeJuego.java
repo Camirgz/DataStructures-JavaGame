@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class MatrizDeJuego {
+
+    //Atributos
     private Elemento[][] matriz;
     private final int FILAS = 10;
     private final int COLUMNAS = 10;

@@ -1,15 +1,18 @@
-
-
 import java.io.*;
 
 public class ArbolBinario {
+
+    //Atributo nodo
     private NodoArbol raiz;
+
 
     public void insertar(Elemento dato) {
         raiz = insertarRec(raiz, dato);
     }
 
     private NodoArbol insertarRec(NodoArbol raiz, Elemento dato) {
+
+        //Verificar que el arbol no esté vacío
         if (raiz == null) {
             raiz = new NodoArbol(dato);
             return raiz;
@@ -22,6 +25,7 @@ public class ArbolBinario {
         return raiz;
     }
 
+    //Contar nodos
     public int contarNodosIzquierda() {
         return contarNodos(raiz.getIzquierdo());
     }
@@ -35,6 +39,7 @@ public class ArbolBinario {
         return 1 + contarNodos(nodo.getIzquierdo()) + contarNodos(nodo.getDerecho());
     }
 
+    //Guardar en archivos
     public void guardarEnArchivo(String archivo, String recorrido) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
             if ("PreOrder".equals(recorrido)) {
@@ -71,6 +76,7 @@ public class ArbolBinario {
         }
     }
 
+    //Cargar pre-orden
     public void cargarPreOrder(String archivo) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             raiz = null;
@@ -81,6 +87,7 @@ public class ArbolBinario {
         }
     }
 
+    //Mostrar Órdenes
     public void mostrarPreOrder() {
         mostrarPreOrderRec(raiz);
         System.out.println();

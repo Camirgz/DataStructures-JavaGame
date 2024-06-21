@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
+        //Inicializaciones
         Scanner scanner = new Scanner(System.in);
         MatrizDeJuego matriz = new MatrizDeJuego();
         ListaDobleEnlazada lista = new ListaDobleEnlazada();
@@ -21,11 +22,12 @@ public class main {
             try {
                 switch (opcion) {
                     case 1:
+                    //Crear/Guardar matriz
                         System.out.println("1a. Crear nueva matriz");
                         System.out.println("1b. Guardar matriz en archivo CSV");
                         System.out.println("1c. Cargar matriz desde archivo CSV");
                         int subOpcion = scanner.nextInt();
-                        if (subOpcion == 1) {
+                        if (subOpcion == 1 ) {
                             matriz = new MatrizDeJuego();
                             System.out.println("Matriz creada.");
                         } else if (subOpcion == 2) {
@@ -36,6 +38,7 @@ public class main {
                         }
                         break;
                     case 2:
+                    //Lista enalazada
                         Elemento[][] elementos = matriz.getMatriz();
                         for (Elemento[] fila : elementos) {
                             for (Elemento e : fila) {
@@ -47,6 +50,7 @@ public class main {
                         System.out.println("Lista Enlazada Doble creada.");
                         break;
                     case 3:
+                    //Arbol binario
                         elementos = matriz.getMatriz();
                         for (Elemento[] fila : elementos) {
                             for (Elemento e : fila) {
@@ -58,6 +62,7 @@ public class main {
                         System.out.println("Árbol Binario creado.");
                         break;
                     case 4:
+                    //Manipular lista enlazada
                         System.out.println("4a. Obtener el elemento más grande");
                         System.out.println("4b. Obtener el elemento más pequeño");
                         System.out.println("4c. Obtener el promedio");
@@ -83,6 +88,7 @@ public class main {
                         }
                         break;
                     case 5:
+                    //Manipular arbol
                         System.out.println("5a. Obtener cantidad de nodos a la izquierda de la raíz del árbol");
                         System.out.println("5b. Obtener cantidad de nodos a la derecha de la raíz del árbol");
                         System.out.println("5c. Guardar cada recorrido del árbol en archivos de texto");
@@ -110,7 +116,8 @@ public class main {
                     default:
                         System.out.println("Opción no válida.");
                 }
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (Exception e) {
+                System.out.println("Valor inválido");
                 e.printStackTrace();
             }
         }

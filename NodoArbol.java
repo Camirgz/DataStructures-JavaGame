@@ -1,8 +1,11 @@
 public class NodoArbol {
+
+    //Atributos
     private Elemento dato;
     private NodoArbol izquierdo;
     private NodoArbol derecho;
 
+    //Setters y getters
     public NodoArbol(Elemento dato) {
         this.dato = dato;
     }
