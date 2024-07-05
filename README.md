@@ -1,13 +1,13 @@
 Claro, aquí tienes el archivo `README.md` completo en formato Markdown sin la estructura del proyecto:
 
 ```markdown
-# Proyecto Programado #03 - CI0112
+#Proyecto Programado #03 - CI0112
 
-## Descripción
+##Descripción
 
 Este proyecto implementa una serie de estructuras de datos y algoritmos en Java. Incluye una matriz de elementos, una lista doblemente enlazada y un árbol binario. El programa permite al usuario realizar varias operaciones con estas estructuras de datos a través de un menú interactivo.
 
-## Clases y Paquetes
+##Clases y Paquetes
 
 - `main.Main`: Contiene el punto de entrada del programa y el menú interactivo.
 - `juego.Elemento`: Define los elementos de la matriz.
