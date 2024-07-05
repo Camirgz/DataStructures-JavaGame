@@ -115,7 +115,7 @@ public class main {
                                     lista.mostrar();
                                     break;
                                 default:
-                                    System.out.println("Opción no vAlida.");
+                                    System.out.println("Opción no valida.");
                             }
                         }
                         break;
@@ -149,7 +149,7 @@ public class main {
                                     arbol.mostrarPostOrden();
                                     break;
                                 default:
-                                    System.out.println("Opción no vAlida.");
+                                    System.out.println("Opción no valida.");
                             }
                         }
                         break;
@@ -157,7 +157,7 @@ public class main {
                         System.out.println("Gracias!");
                         System.exit(0); // Salir del programa
                     default:
-                        System.out.println("Opción no vAlida.");
+                        System.out.println("Opción no valida.");
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.toString());
