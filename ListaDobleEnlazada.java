@@ -102,6 +102,8 @@ public class ListaDobleEnlazada implements Serializable {
             while ((elemento = (Elemento) in.readObject()) != null) {
                 insertarAlInicio(elemento);
             }
-        } catch (EOFException ignored) {}
+        } catch (Exception error) {
+            System.out.println("Eror: " + error.toString());
+        }
     }
 }
