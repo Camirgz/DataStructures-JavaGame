@@ -1,6 +1,8 @@
 import java.io.*;
 
 public class ListaDobleEnlazada implements Serializable {
+
+    //Atributo
     private Nodo cabeza;
 
     public void insertarAlInicio(Elemento dato) {
@@ -12,6 +14,7 @@ public class ListaDobleEnlazada implements Serializable {
         cabeza = nuevoNodo;
     }
 
+    //Imprimir lista
     public void mostrar() {
         Nodo actual = cabeza;
         while (actual != null) {
@@ -21,6 +24,7 @@ public class ListaDobleEnlazada implements Serializable {
         System.out.println();
     }
 
+    //Estats
     public int obtenerMayor() {
         if (cabeza == null) return Integer.MIN_VALUE;
         Nodo actual = cabeza;
@@ -80,6 +84,7 @@ public class ListaDobleEnlazada implements Serializable {
         return true;
     }
 
+    //Manejo de archivos binarios
     public void guardarEnBinario(String archivo) throws IOException {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo))) {
             Nodo actual = cabeza;

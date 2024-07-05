@@ -5,7 +5,6 @@ public class ArbolBinario {
     //Atributo nodo
     private NodoArbol raiz;
 
-
     public void insertar(Elemento dato) {
         raiz = insertarRec(raiz, dato);
     }
@@ -38,91 +37,112 @@ public class ArbolBinario {
         if (nodo == null) return 0;
         return 1 + contarNodos(nodo.getIzquierdo()) + contarNodos(nodo.getDerecho());
     }
-
-    //Guardar en archivos
-    public void guardarEnArchivo(String archivo, String recorrido) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
-            if ("PreOrder".equals(recorrido)) {
-                guardarPreOrder(raiz, writer);
-            } else if ("Order".equals(recorrido)) {
-                guardarOrder(raiz, writer);
-            } else if ("PostOrder".equals(recorrido)) {
-                guardarPostOrder(raiz, writer);
+    public void guardarEnArchivo(String archivo, String recorrido) {
+        while (true) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+                if ("PreOrden".equals(recorrido)) {
+                    guardarPreOrden(raiz, writer);
+                } else if ("Orden".equals(recorrido)) {
+                    guardarOrden(raiz, writer);
+                } else if ("PostOrden".equals(recorrido)) {
+                    guardarPostOrden(raiz, writer);
+                }
+                break; // Si todo va bien, salimos del bucle
+            } catch (IOException e) {
+                System.out.println("Error al guardar en archivo: " + e.getMessage());
             }
         }
     }
 
-    private void guardarPreOrder(NodoArbol nodo, BufferedWriter writer) throws IOException {
-        if (nodo != null) {
-            writer.write(nodo.getDato().getValor() + "\n");
-            guardarPreOrder(nodo.getIzquierdo(), writer);
-            guardarPreOrder(nodo.getDerecho(), writer);
+    private void guardarPreOrden(NodoArbol nodo, BufferedWriter writer) {
+        try {
+            if (nodo != null) {
+                writer.write(nodo.getDato().getValor() + "\n");
+                guardarPreOrden(nodo.getIzquierdo(), writer);
+                guardarPreOrden(nodo.getDerecho(), writer);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir en archivo: " + e.getMessage());
         }
     }
 
-    private void guardarOrder(NodoArbol nodo, BufferedWriter writer) throws IOException {
-        if (nodo != null) {
-            guardarOrder(nodo.getIzquierdo(), writer);
-            writer.write(nodo.getDato().getValor() + "\n");
-            guardarOrder(nodo.getDerecho(), writer);
+    private void guardarOrden(NodoArbol nodo, BufferedWriter writer) {
+        try {
+            if (nodo != null) {
+                guardarOrden(nodo.getIzquierdo(), writer);
+                writer.write(nodo.getDato().getValor() + "\n");
+                guardarOrden(nodo.getDerecho(), writer);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir en archivo: " + e.getMessage());
         }
     }
 
-    private void guardarPostOrder(NodoArbol nodo, BufferedWriter writer) throws IOException {
-        if (nodo != null) {
-            guardarPostOrder(nodo.getIzquierdo(), writer);
-            guardarPostOrder(nodo.getDerecho(), writer);
-            writer.write(nodo.getDato().getValor() + "\n");
+    private void guardarPostOrden(NodoArbol nodo, BufferedWriter writer) {
+        try {
+            if (nodo != null) {
+                guardarPostOrden(nodo.getIzquierdo(), writer);
+                guardarPostOrden(nodo.getDerecho(), writer);
+                writer.write(nodo.getDato().getValor() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir en archivo: " + e.getMessage());
         }
     }
 
-    //Cargar pre-orden
-    public void cargarPreOrder(String archivo) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-            raiz = null;
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                insertar(new Elemento(Integer.parseInt(linea)));
+    // Cargar pre-orden
+    public void cargarPreOrden(String archivo) {
+        while (true) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+                raiz = null;
+                String linea;
+                while ((linea = reader.readLine()) != null) {
+                    insertar(new Elemento(Integer.parseInt(linea)));
+                }
+                break; // Si todo va bien, salimos del bucle
+            } catch (IOException e) {
+                System.out.println("Error al cargar desde archivo: " + e.getMessage());
             }
         }
     }
+
 
     //Mostrar Órdenes
-    public void mostrarPreOrder() {
-        mostrarPreOrderRec(raiz);
+    public void mostrarPreOrden() {
+        mostrarPreOrdenRec(raiz);
         System.out.println();
     }
 
-    private void mostrarPreOrderRec(NodoArbol nodo) {
+    private void mostrarPreOrdenRec(NodoArbol nodo) {
         if (nodo != null) {
             System.out.print(nodo.getDato().getValor() + " ");
-            mostrarPreOrderRec(nodo.getIzquierdo());
-            mostrarPreOrderRec(nodo.getDerecho());
+            mostrarPreOrdenRec(nodo.getIzquierdo());
+            mostrarPreOrdenRec(nodo.getDerecho());
         }
     }
 
-    public void mostrarOrder() {
-        mostrarOrderRec(raiz);
+    public void mostrarOrden() {
+        mostrarOrdenRec(raiz);
         System.out.println();
     }
 
-    private void mostrarOrderRec(NodoArbol nodo) {
+    private void mostrarOrdenRec(NodoArbol nodo) {
         if (nodo != null) {
-            mostrarOrderRec(nodo.getIzquierdo());
+            mostrarOrdenRec(nodo.getIzquierdo());
             System.out.print(nodo.getDato().getValor() + " ");
-            mostrarOrderRec(nodo.getDerecho());
+            mostrarOrdenRec(nodo.getDerecho());
         }
     }
 
-    public void mostrarPostOrder() {
-        mostrarPostOrderRec(raiz);
+    public void mostrarPostOrden() {
+        mostrarPostOrdenRec(raiz);
         System.out.println();
     }
 
-    private void mostrarPostOrderRec(NodoArbol nodo) {
+    private void mostrarPostOrdenRec(NodoArbol nodo) {
         if (nodo != null) {
-            mostrarPostOrderRec(nodo.getIzquierdo());
-            mostrarPostOrderRec(nodo.getDerecho());
+            mostrarPostOrdenRec(nodo.getIzquierdo());
+            mostrarPostOrdenRec(nodo.getDerecho());
             System.out.print(nodo.getDato().getValor() + " ");
         }
     }

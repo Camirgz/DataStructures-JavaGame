@@ -1,13 +1,16 @@
 public class Nodo {
     
+    //Atributos
     private Elemento dato;
     private Nodo siguiente;
     private Nodo anterior;
 
+    //Constructor
     public Nodo(Elemento dato) {
         this.dato = dato;
     }
 
+    //Getters Setters
     public Elemento getDato() {
         return dato;
     }

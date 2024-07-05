@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 public class MatrizDeJuego {
@@ -10,6 +8,7 @@ public class MatrizDeJuego {
     private final int FILAS = 10;
     private final int COLUMNAS = 10;
 
+    //Constructor de la matriz
     public MatrizDeJuego() {
         matriz = new Elemento[FILAS][COLUMNAS];
         Random rand = new Random();
@@ -20,6 +19,7 @@ public class MatrizDeJuego {
         }
     }
 
+    //Archivo
     public void guardarEnCSV(String archivo) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
             for (int i = 0; i < FILAS; i++) {
@@ -31,6 +31,7 @@ public class MatrizDeJuego {
         }
     }
 
+    //Getter de la matriz
     public Elemento[][] getMatriz() {
         return matriz;
     }

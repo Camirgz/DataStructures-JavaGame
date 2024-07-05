@@ -9,23 +9,24 @@ public class main {
         ListaDobleEnlazada lista = new ListaDobleEnlazada();
         ArbolBinario arbol = new ArbolBinario();
 
+        //Menu
         while (true) {
-            System.out.println("Menú de opciones:");
-            System.out.println("1- Crear/cargar – Guardar matriz");
-            System.out.println("2- Crear Lista Enlazada Doble");
-            System.out.println("3- Crear Árbol Binario");
-            System.out.println("4- Operaciones con la Lista Enlazada Doble");
-            System.out.println("5- Operaciones con el Árbol Binario");
-            System.out.println("6- Salir");
+            System.out.println("Menú de opciones, ingrese el número correspondiente a tu elección:");
+            System.out.println("1.Crear/cargar – Guardar matriz");
+            System.out.println("2.Crear Lista Enlazada Doble");
+            System.out.println("3.Crear Árbol Binario");
+            System.out.println("4.Operaciones con la Lista Enlazada Doble");
+            System.out.println("5.Operaciones con el Árbol Binario");
+            System.out.println("6.Salir");
             int opcion = scanner.nextInt();
 
             try {
                 switch (opcion) {
                     case 1:
                     //Crear/Guardar matriz
-                        System.out.println("1a. Crear nueva matriz");
-                        System.out.println("1b. Guardar matriz en archivo CSV");
-                        System.out.println("1c. Cargar matriz desde archivo CSV");
+                        System.out.println("1. Crear nueva matriz");
+                        System.out.println("2. Guardar matriz en archivo CSV");
+                        System.out.println("3. Cargar matriz desde archivo CSV");
                         int subOpcion = scanner.nextInt();
                         if (subOpcion == 1 ) {
                             matriz = new MatrizDeJuego();
@@ -53,6 +54,7 @@ public class main {
                     //Arbol binario
                         elementos = matriz.getMatriz();
                         for (Elemento[] fila : elementos) {
+                            //Ciclo for-each
                             for (Elemento e : fila) {
                                 if (e.getValor() % 2 == 0) {
                                     arbol.insertar(e);
@@ -63,12 +65,12 @@ public class main {
                         break;
                     case 4:
                     //Manipular lista enlazada
-                        System.out.println("4a. Obtener el elemento más grande");
-                        System.out.println("4b. Obtener el elemento más pequeño");
-                        System.out.println("4c. Obtener el promedio");
-                        System.out.println("4d. Obtener cuántos números primos tiene la lista");
-                        System.out.println("4e. Guardar cada elemento de la lista en un archivo BINARIO");
-                        System.out.println("4f. Cargar los elementos de un archivo binario en una nueva lista");
+                        System.out.println("1. Obtener el elemento más grande");
+                        System.out.println("2. Obtener el elemento más pequeño");
+                        System.out.println("3. Obtener el promedio");
+                        System.out.println("4. Obtener cuántos números primos tiene la lista");
+                        System.out.println("5. Guardar cada elemento de la lista en un archivo BINARIO");
+                        System.out.println("6. Cargar los elementos de un archivo binario en una nueva lista");
                         int subOpcion4 = scanner.nextInt();
                         if (subOpcion4 == 1) {
                             System.out.println("Mayor elemento: " + lista.obtenerMayor());
@@ -89,36 +91,34 @@ public class main {
                         break;
                     case 5:
                     //Manipular arbol
-                        System.out.println("5a. Obtener cantidad de nodos a la izquierda de la raíz del árbol");
-                        System.out.println("5b. Obtener cantidad de nodos a la derecha de la raíz del árbol");
-                        System.out.println("5c. Guardar cada recorrido del árbol en archivos de texto");
-                        System.out.println("5d. Cargar los datos del archivo recorrido PreOrder");
+                        System.out.println("1. Obtener cantidad de nodos a la izquierda de la raíz del árbol");
+                        System.out.println("2. Obtener cantidad de nodos a la derecha de la raíz del árbol");
+                        System.out.println("3. Guardar cada recorrido del árbol en archivos de texto");
+                        System.out.println("4. Cargar los datos del archivo recorrido PreOrden");
                         int subOpcion5 = scanner.nextInt();
                         if (subOpcion5 == 1) {
                             System.out.println("Nodos a la izquierda: " + arbol.contarNodosIzquierda());
                         } else if (subOpcion5 == 2) {
                             System.out.println("Nodos a la derecha: " + arbol.contarNodosDerecha());
                         } else if (subOpcion5 == 3) {
-                            arbol.guardarEnArchivo("arbol_preorder.txt", "PreOrder");
-                            arbol.guardarEnArchivo("arbol_order.txt", "Order");
-                            arbol.guardarEnArchivo("arbol_postorder.txt", "PostOrder");
+                            arbol.guardarEnArchivo("arbol_preOrden.txt", "PreOrden");
+                            arbol.guardarEnArchivo("arbol_Orden.txt", "Orden");
+                            arbol.guardarEnArchivo("arbol_postOrden.txt", "PostOrden");
                             System.out.println("Recorridos guardados en archivos de texto.");
                         } else if (subOpcion5 == 4) {
-                            arbol.cargarPreOrder("arbol_preorder.txt");
-                            arbol.mostrarPreOrder();
-                            arbol.mostrarOrder();
-                            arbol.mostrarPostOrder();
+                            arbol.cargarPreOrden("arbol_preorden.txt");
+                            arbol.mostrarPreOrden();
+                            arbol.mostrarOrden();
+                            arbol.mostrarPostOrden();
                         }
                         break;
                     case 6:
-                        System.exit(0);
-                        break;
+                        System.out.println("Gracias!");
                     default:
                         System.out.println("Opción no válida.");
                 }
             } catch (Exception e) {
-                System.out.println("Valor inválido");
-                e.printStackTrace();
+                System.out.println("Valor inválido, " + e.toString());
             }
         }
     }
