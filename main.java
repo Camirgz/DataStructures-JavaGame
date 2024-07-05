@@ -12,7 +12,7 @@ public class main {
 
         System.out.println("\n === Bienvenid@ ===");
 
-        //Menu1
+        //Menu
         while (true) {
             System.out.println("\nMenu de opciones, \nIngrese el número correspondiente a tu elección: \n");
             System.out.println("1. Crear/cargar - Guardar matriz");
@@ -41,7 +41,11 @@ public class main {
                                 System.out.println("Matriz guardada en matriz.csv");
                             }
                         } else if (subOpcion == 3) {
-                            // Implementar la carga de archivo CSV
+                            System.out.println("Ingrese el nombre del archivo CSV:");
+                            scanner.nextLine(); // Limpiar el scanner
+                            String archivoCSV = scanner.nextLine().trim();
+                            matriz = new MatrizDeJuego(archivoCSV);
+                            System.out.println("Matriz cargada desde " + archivoCSV);
                         }
                         break;
                     case 2:
