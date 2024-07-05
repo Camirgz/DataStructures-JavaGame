@@ -9,14 +9,15 @@ public class main {
         ListaDobleEnlazada lista = new ListaDobleEnlazada();
         ArbolBinario arbol = new ArbolBinario();
 
+        System.out.println("\n === Bienvenid@ ===6");
         //Menu
         while (true) {
-            System.out.println("Menú de opciones, ingrese el número correspondiente a tu elección:");
-            System.out.println("1.Crear/cargar – Guardar matriz");
+            System.out.println("Menu de opciones, ingrese el número correspondiente a tu eleccion:");
+            System.out.println("1.Crear/cargar - Guardar matriz");
             System.out.println("2.Crear Lista Enlazada Doble");
-            System.out.println("3.Crear Árbol Binario");
+            System.out.println("3.Crear Arbol Binario");
             System.out.println("4.Operaciones con la Lista Enlazada Doble");
-            System.out.println("5.Operaciones con el Árbol Binario");
+            System.out.println("5.Operaciones con el Arbol Binario");
             System.out.println("6.Salir");
             int opcion = scanner.nextInt();
 
@@ -114,6 +115,7 @@ public class main {
                         break;
                     case 6:
                         System.out.println("Gracias!");
+                        System.exit(0); //Salir del todo del programa
                     default:
                         System.out.println("Opción no válida.");
                 }
